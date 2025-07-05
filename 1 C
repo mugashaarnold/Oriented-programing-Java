@@ -1,0 +1,27 @@
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+public class CompanyTest {
+    private Company company;
+
+    @BeforeEach
+    public void setUp() {
+        company = new Company();
+    }
+
+    @Test
+    public void testScheduleVehicle_Success() {
+        Passenger passenger = new Passenger();
+        Location pickup = new Location(10, 20);
+        Location destination = new Location(30, 40);
+        
+        assertTrue(company.scheduleVehicle(passenger, pickup, destination));
+    }
+
+    @Test
+    public void testScheduleVehicle_NoAvailableVehicles() {
+        // Assuming the company has no available vehicles
+        assertFalse(company.scheduleVehicle(new Passenger(), new Location(0, 0), new Location(50, 50)));
+    }
+}
